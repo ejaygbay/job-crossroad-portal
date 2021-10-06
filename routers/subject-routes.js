@@ -1,7 +1,7 @@
 const routers = require('express').Router();
 
-routers.get('/teachers', (req, res) => {
-    res.render('teachers/all-teachers');
+routers.get('/subjects', (req, res) => {
+    res.render('subjects/all-subjects');
 })
 
 module.exports = routers;
