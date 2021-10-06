@@ -1,7 +1,7 @@
 const routers = require('express').Router();
 
-routers.get('/teacher', (req, res) => {
-    res.send("Teacher");
+routers.get('/teachers', (req, res) => {
+    res.render('all-teachers');
 })
 
 module.exports = routers;
