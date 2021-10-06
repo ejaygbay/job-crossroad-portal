@@ -5,8 +5,11 @@ routers.get('/subjects', (req, res) => {
 })
 
 routers.get('/subjects/create', (req, res) => {
-    res.render('views-template/views-template');
-    // res.render('subjects/all-subjects');
+    res.render('subjects/create-subject');
+})
+
+routers.get('/subjects/assign', (req, res) => {
+    res.render('subjects/assign-subject');
 })
 
 module.exports = routers;
