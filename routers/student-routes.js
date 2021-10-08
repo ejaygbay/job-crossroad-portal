@@ -4,7 +4,7 @@ routers.get('/students', (req, res) => {
     res.render('students/all-students');
 })
 
-routers.get('/students/create', (req, res) => {
+routers.get('/students/register', (req, res) => {
     res.render('students/create-student');
 })
 
