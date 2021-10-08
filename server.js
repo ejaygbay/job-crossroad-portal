@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const PORT = 3000;
+const authRoutes = require('./routers/auth');
 const dashboardRoutes = require('./routers/dashboard-routes');
 const teacherRoutes = require('./routers/teacher-routes');
 const studentRoutes = require('./routers/student-routes');
@@ -14,6 +15,7 @@ app.set('view engine', 'ejs');
 app.set('views', 'views');
 app.use(express.static(__dirname, +'/public'));
 
+app.use(authRoutes);
 app.use(dashboardRoutes);
 app.use(teacherRoutes);
 app.use(studentRoutes);
