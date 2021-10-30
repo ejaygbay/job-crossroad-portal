@@ -1,6 +1,6 @@
 const routers = require('express').Router();
 
-routers.get('/teachers', (req, res) => {
+routers.get('/jobs', (req, res) => {
     res.render('teachers/all-teachers');
 })
 
