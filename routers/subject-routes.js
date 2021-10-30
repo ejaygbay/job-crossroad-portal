@@ -1,6 +1,6 @@
 const routers = require('express').Router();
 
-routers.get('/subjects', (req, res) => {
+routers.get('/jobs/personal', (req, res) => {
     res.render('subjects/all-subjects');
 })
 
