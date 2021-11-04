@@ -1,7 +1,6 @@
 const routers = require('express').Router();
+const categoryControllers = require('../controllers/category-controllers');
 
-routers.get('/category', (req, res) => {
-    res.render('categories/category', { page: 'category' });
-})
+routers.get('/category', categoryControllers)
 
 module.exports = routers;
