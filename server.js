@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
-const authRoutes = require('./routers/auth');
+const authRoutes = require('./routers/auth-routes');
 const dashboardRoutes = require('./routers/dashboard-routes');
 const jobRoutes = require('./routers/job-routes');
 const categoryRoutes = require('./routers/category-routes');
