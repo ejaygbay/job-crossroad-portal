@@ -7,10 +7,6 @@ const jobRoutes = require('./routers/job-routes');
 const categoryRoutes = require('./routers/category-routes');
 const sequelize = require('./models/tables');
 
-sequelize.CATEGORY;
-sequelize.USERS;
-sequelize.NOTIFICATION_DETAILS;
-
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 app.use(express.static(__dirname, +'/public'));

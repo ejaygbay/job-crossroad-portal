@@ -91,10 +91,10 @@ const NOTIFICATION_DETAILS = sequelize.define('notification_detail', {
 });
 
 // Reset DB
-// sequelize.sync({
-//     // alter: true,
-//     force: true
-// }).then(suc => console.log("SUCCESS=====", suc)).catch(err => console.log("ERROR+++++", err))
+sequelize.sync({
+    // alter: true,
+    force: true
+}).then(suc => console.log("SUCCESS=====", suc.models)).catch(err => console.log("ERROR+++++", err))
 
 module.exports = {
     USERS,
