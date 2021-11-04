@@ -5,7 +5,11 @@ const authRoutes = require('./routers/auth-routes');
 const dashboardRoutes = require('./routers/dashboard-routes');
 const jobRoutes = require('./routers/job-routes');
 const categoryRoutes = require('./routers/category-routes');
+const sequelize = require('./models/tables');
 
+sequelize.CATEGORY;
+sequelize.USERS;
+sequelize.NOTIFICATION_DETAILS;
 
 app.set('view engine', 'ejs');
 app.set('views', 'views');
