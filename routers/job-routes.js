@@ -1,15 +1,10 @@
 const routers = require('express').Router();
+const jobControllers = require('../controllers/job-controllers');
 
-routers.get('/jobs/personal', (req, res) => {
-    res.render('jobs/personal-jobs', { page: 'personal-jobs' });
-})
+routers.get('/jobs/personal', jobControllers.personalJobView);
 
-routers.get('/jobs/create', (req, res) => {
-    res.render('jobs/create-job', { page: 'create-job' });
-})
+routers.get('/jobs/create', jobControllers.createJobView);
 
-routers.get('/jobs', (req, res) => {
-    res.render('jobs/all-jobs', { page: 'all-jobs' });
-})
+routers.get('/jobs', jobControllers.allJobs);
 
 module.exports = routers;
