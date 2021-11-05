@@ -17,7 +17,7 @@ const USERS = sequelize.define('user', {
     },
     middle_name: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
     },
     last_name: {
         type: DataTypes.STRING,
@@ -36,8 +36,8 @@ const USERS = sequelize.define('user', {
         defaultValue: 'active'
     },
     visible: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: true
+        type: DataTypes.STRING,
+        defaultValue: 'true'
     }
 }, {
     underscored: true

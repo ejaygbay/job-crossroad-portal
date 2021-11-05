@@ -5,6 +5,6 @@ routers.get('/login', authController.loginForm);
 
 routers.get('/account/create', authController.signUpForm);
 
-routers.post('/account/create', authController.handleSignUpForm);
+routers.post('/account/create', authController.saveSignUpForm);
 
 module.exports = routers;

@@ -38,9 +38,13 @@ const validateInputs = (data) => {
 }
 
 const makeRequest = (data) => {
+    console.log(data)
     fetch('/account/create', {
             method: 'POST',
-            body: { test: "data" }
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
         })
         .then(response => response.json())
         .then(data => {

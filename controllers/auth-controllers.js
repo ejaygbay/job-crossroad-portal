@@ -12,7 +12,8 @@ const signUpForm = (req, res) => {
     res.render('auth/register');
 }
 
-const handleSignUpForm = async(req, res) => {
+const saveSignUpForm = async(req, res) => {
+    console.log(req.body, req.body.email)
     await USERS.findOrCreate({
             where: { email: req.body.email },
             defaults: req.body
@@ -117,5 +118,5 @@ const deleteJob = async(req, res) => {
 module.exports = {
     loginForm,
     signUpForm,
-    handleSignUpForm,
+    saveSignUpForm,
 }
