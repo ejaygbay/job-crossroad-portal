@@ -40,7 +40,7 @@ const validateInputs = (data) => {
 const makeRequest = (data) => {
     fetch('/account/create', {
             method: 'POST',
-            body: data
+            body: { test: "data" }
         })
         .then(response => response.json())
         .then(data => {
