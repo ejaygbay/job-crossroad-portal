@@ -1,4 +1,4 @@
-document.querySelector('#create-account-btn').addEventListener('click', e => {
+document.querySelector('#create-account-btn').addEventListener('click', (e) => {
     let first_name = document.getElementById('first-name').value.trim();
     let middle_name = document.getElementById('middle-name').value.trim();
     let last_name = document.getElementById('last-name').value.trim();
@@ -16,12 +16,36 @@ document.querySelector('#create-account-btn').addEventListener('click', e => {
     }
 
     if (!validateInputs(account_details)) {
-        // make request
-        console.log("No Empty");
+        makeRequest(account_details, result => {
+            if (result.code === 0) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Account created successfully',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            } else if (result.code === 2) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Email already in use',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'An error has occurred',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }
+        })
     } else {
         // don't make request
         console.log("Empty");
-        makeRequest(account_details);
+
+
+
     }
 })
 
@@ -37,8 +61,7 @@ const validateInputs = (data) => {
     return result;
 }
 
-const makeRequest = (data) => {
-    console.log(data)
+const makeRequest = (data, callback) => {
     fetch('/account/create', {
             method: 'POST',
             headers: {
@@ -47,11 +70,6 @@ const makeRequest = (data) => {
             body: JSON.stringify(data)
         })
         .then(response => response.json())
-        .then(data => {
-            // TODO handle body
-            console.log("body:", data);
-        }).catch(error => {
-            // TODO handle error
-            console.log("error:", error);
-        })
+        .then(data => callback(data))
+        .catch(error => callback(error))
 }

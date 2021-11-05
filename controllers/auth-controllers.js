@@ -13,7 +13,6 @@ const signUpForm = (req, res) => {
 }
 
 const saveSignUpForm = async(req, res) => {
-    console.log(req.body, req.body.email)
     await USERS.findOrCreate({
             where: { email: req.body.email },
             defaults: req.body
