@@ -8,7 +8,6 @@ document.querySelector('#create-account-btn').addEventListener('click', (e) => {
 
     let account_details = {
         first_name: first_name,
-        middle_name: middle_name,
         last_name: last_name,
         contact: contact,
         email: email,
@@ -16,36 +15,39 @@ document.querySelector('#create-account-btn').addEventListener('click', (e) => {
     }
 
     if (!validateInputs(account_details)) {
+        account_details.middle_name = middle_name;
+
         makeRequest(account_details, result => {
             if (result.code === 0) {
                 Swal.fire({
                     icon: 'success',
                     title: 'Account created successfully',
                     showConfirmButton: false,
-                    timer: 1500
+                    timer: 2000
                 })
             } else if (result.code === 2) {
                 Swal.fire({
                     icon: 'error',
                     title: 'Email already in use',
                     showConfirmButton: false,
-                    timer: 1500
+                    timer: 2000
                 })
             } else {
                 Swal.fire({
                     icon: 'error',
                     title: 'An error has occurred',
                     showConfirmButton: false,
-                    timer: 1500
+                    timer: 2000
                 })
             }
         })
     } else {
-        // don't make request
-        console.log("Empty");
-
-
-
+        Swal.fire({
+            icon: 'error',
+            title: 'Make sure all the required fields are filled in',
+            showConfirmButton: false,
+            timer: 2500
+        })
     }
 })
 
