@@ -7,7 +7,7 @@ const signUpForm = (req, res) => {
 }
 
 const handleSignUpForm = (req, res) => {
-    res.send("Done");
+    res.send({ msg: "Done" });
 }
 
 module.exports = {

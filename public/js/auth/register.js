@@ -21,6 +21,7 @@ document.querySelector('#create-account-btn').addEventListener('click', e => {
     } else {
         // don't make request
         console.log("Empty");
+        makeRequest(account_details);
     }
 })
 
@@ -37,16 +38,16 @@ const validateInputs = (data) => {
 }
 
 const makeRequest = (data) => {
-    fetch(e.target.action, {
-        method: 'POST',
-        body: data
-    }).then((resp) => {
-        resp = resp.json();
-    }).then((body) => {
-        // TODO handle body
-        console.log("body:", body);
-    }).catch((error) => {
-        // TODO handle error
-        console.log("error:", error);
-    });
+    fetch('/account/create', {
+            method: 'POST',
+            body: data
+        })
+        .then(response => response.json())
+        .then(data => {
+            // TODO handle body
+            console.log("body:", data);
+        }).catch(error => {
+            // TODO handle error
+            console.log("error:", error);
+        })
 }
