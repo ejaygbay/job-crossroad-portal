@@ -6,7 +6,12 @@ const signUpForm = (req, res) => {
     res.render('auth/register');
 }
 
+const handleSignUpForm = (req, res) => {
+    res.send("Done");
+}
+
 module.exports = {
     loginForm,
-    signUpForm
+    signUpForm,
+    handleSignUpForm,
 }
