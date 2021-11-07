@@ -10,38 +10,14 @@ document.querySelector('#login-btn').addEventListener('click', (e) => {
     if (!validateInputs(login_details)) {
 
         makeRequest(login_details, result => {
-                console.log(result);
-
-                //         if (result.code === 0) {
-                //             Swal.fire({
-                //                 icon: 'success',
-                //                 title: 'Account created successfully',
-                //                 showConfirmButton: false,
-                //                 timer: 2000
-                //             })
-                //         } else if (result.code === 2) {
-                //             Swal.fire({
-                //                 icon: 'error',
-                //                 title: 'Email already in use',
-                //                 showConfirmButton: false,
-                //                 timer: 2000
-                //             })
-                //         } else {
-                //             Swal.fire({
-                //                 icon: 'error',
-                //                 title: 'An error has occurred',
-                //                 showConfirmButton: false,
-                //                 timer: 2000
-                //             })
-                //         }
-            })
-            // } else {
-            //     Swal.fire({
-            //         icon: 'error',
-            //         title: 'Make sure all the required fields are filled in',
-            //         showConfirmButton: false,
-            //         timer: 2500
-            //     })
+            if (result.code === 0) {
+                window.location.href = "/";
+            } else {
+                console.log("Wrong details");
+                // document.getElementById('email').style = "color: red";
+                // document.getElementById('password').style = "color: red";
+            }
+        })
     }
 })
 
@@ -58,7 +34,7 @@ const validateInputs = (data) => {
 }
 
 const makeRequest = (data, callback) => {
-    fetch('/account/create', {
+    fetch('/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

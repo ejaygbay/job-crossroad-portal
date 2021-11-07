@@ -8,6 +8,42 @@ const loginForm = (req, res) => {
     res.render('auth/login');
 }
 
+const loginDetails = async(req, res) => {
+    let res_obj = {
+        code: 0,
+        msg: 'active user'
+    }
+
+    getUsers(req.body, result => {
+        if (result.status !== 'active') {
+            res_obj.code = 1;
+            res_obj.msg = 'not active user';
+        }
+
+        res.send(res_obj)
+    })
+}
+
+const getUsers = (data, callback) => {
+    USERS.findAll({
+            attributes: ['email', 'password', 'status'],
+            where: {
+                email: data.email,
+                password: data.password
+            }
+        })
+        .then(response => {
+            if (response.length > 0) {
+                return callback(response[0].dataValues);
+            } else {
+                return callback(response);
+            }
+        })
+        .catch(err => {
+            return callback(err.message);
+        })
+}
+
 const signUpForm = (req, res) => {
     res.render('auth/register');
 }
@@ -31,9 +67,6 @@ const saveSignUpForm = async(req, res) => {
 
     res.send(res_obj);
 }
-
-
-
 
 const getJobs = async(req, res) => {
     let auth_result = await auth(req.query);
@@ -116,6 +149,7 @@ const deleteJob = async(req, res) => {
 
 module.exports = {
     loginForm,
+    loginDetails,
     signUpForm,
-    saveSignUpForm,
+    saveSignUpForm
 }
