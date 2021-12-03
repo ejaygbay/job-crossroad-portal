@@ -2,4 +2,11 @@ const categoryView = (req, res) => {
     res.render('categories/category', { page: 'category' });
 }
 
-module.exports = categoryView;
+const createCategory = (req, res) => {
+
+}
+
+module.exports = {
+    categoryView,
+    createCategory,
+}
